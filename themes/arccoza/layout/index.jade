@@ -1,0 +1,13 @@
+extends base
+
+block page_body
+  .posts
+    ul.posts__inner
+      each post in page.posts.toArray()
+        li.posts__item
+          article.post.post--compact
+            h2.post__title
+              a(href=url_for(post.path))= post.title
+            .post__excerpt!= post.excerpt
+
+  //- include _partial/post/list_pagination

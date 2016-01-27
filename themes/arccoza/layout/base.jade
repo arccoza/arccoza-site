@@ -1,0 +1,47 @@
+doctype html
+html(lang="en")
+
+  head
+    include _partial/head
+
+  body
+    include _partial/symbol-defs.svg
+    .page
+      .page__inner
+        header.page-header
+          block page_header
+            .page-header__inner
+              .page-header__masthead
+                .page-header__logo
+                  img(src='/img/logo.svg')
+                .page-header__title= config.title
+                .page-header__hamburger
+                  svg.page-header__icon.icon-menu
+                    use(xlink:href="#icon-menu")
+              .page-header__nav.page-header__nav--left
+                a(href='/') all
+                a(href='/') posts
+                a(href='/') projects
+              
+              .page-header__nav.page-header__nav--right
+                a(href='/') about & contact
+                a(href='/') 
+                  |twitter
+                  svg.page-header__icon.icon-twitter
+                    use(xlink:href="#icon-twitter")
+                a(href='/') 
+                  |github
+                  svg.page-header__icon.icon-github
+                    use(xlink:href="#icon-github")
+        .quotes
+          blockquote
+            |Up yours, Zoidberg! Up wherever your species traditionally crams things.
+            br
+            |- Hermes
+
+        section.page-body
+          block page_body
+
+        footer.page-footer
+          block page_footer
+            //- include _partial/site/footer
