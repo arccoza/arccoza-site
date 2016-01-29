@@ -103,6 +103,10 @@ h3 {
 	/*overflow-x: hidden;
 	overflow-y: visible;*/
 }
+.body--mob-menu-open .page-body, .body--mob-menu-open .quotes {
+	/*transition: filter 0 0 0 1s;*/
+	/*filter: blur(20px);*/
+}
 .page__inner {
 	position: relative;
 	padding-top: 3.2rem;
@@ -111,6 +115,7 @@ h3 {
 .page-header {
 	position: fixed;
 	background-color: #191919;
+	/*background-color: rgba(25, 25, 25, 0.1);*/
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -227,11 +232,18 @@ h3 {
 		layout: stack center;
 		font-size: 1rem;
 	}
+	.page-header--mob-menu-open .page-header__nav > * {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+		transition: transform 0.2s 0.1s, opacity 0.7s;
+	}
 	.page-header__nav > * {
 		text-align: center;
 		padding: 1rem 0;
 		/*font-size: 1.2rem;*/
 		font-size: 1rem;
+		transform: scale(1.4) translateY(-1rem);
+		opacity: 0;
 	}
 	.page-header__icon {
 		width: 0.6rem;
@@ -246,6 +258,9 @@ h3 {
 		height: 3rem;
 		text-align: center;
 		z-index: 100;
+		/*Fix rendering layer bug where menu anim covers hamburger
+		by forcing the hamburger container into a new rendering layer too.*/
+		transform: translateZ(0);
 	}
 	.page-header__logo {
 		display: inline-block;
@@ -277,6 +292,7 @@ h3 {
 		line-height: 3rem;
 		display: block;
 		text-align: center;
+		/*transform: translateZ(0);*/
 	}
 	.page-header__hamburger > svg {
 		vertical-align: middle;
@@ -316,11 +332,15 @@ h3 {
 }
 .posts__item {
 	position: relative;
+	aspect-ratio: calc('4:3' + 0.4rem);
 }
 
 @media (--large) {
 	.posts__item {
 		g12/main-span: 3;
+	}
+	.posts__item:nth-child(1) {
+		g12/main-span: 6;
 	}
 	/*.posts__item:nth-child(1) {
 		g12/main-span: 3, 0, 6;
@@ -344,7 +364,7 @@ h3 {
 }
 
 .post {
-	position: relative;
+	/*position: relative;*/
 	font-family: 'Roboto', sans-serif;
 }
 .post--compact {

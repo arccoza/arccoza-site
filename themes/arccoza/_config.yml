@@ -64,5 +64,6 @@ postcss:
 		postcss-import: {}
 		postcss-media-minmax: {}
 		postcss-custom-media: {}
+		postcss-aspect-ratio: {}
 		postcss-layout: {}
 		autoprefixer: {}
