@@ -1,0 +1,14 @@
+extends base
+
+block page_body
+  .posts.posts--single
+    ul.posts__inner
+      li.posts__item
+        article.post.post--full
+          .post__inner
+            h1.post__title= page.title
+            //- .post__excerpt!= page.excerpt
+            .post__content!= page.content
+            hr
+
+  //- include _partial/post/list_pagination
