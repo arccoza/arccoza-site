@@ -1,5 +1,12 @@
 extends base
 
+block page_quotes
+  .quotes
+    blockquote
+      |Up yours, Zoidberg! Up wherever your species traditionally crams things.
+      br
+      |- Hermes
+
 block page_body
   .posts.posts--list
     ul.posts__inner
@@ -7,8 +14,15 @@ block page_body
         li.posts__item
           article.post.post--compact
             .post__inner
-              h2.post__title
-                a(href=url_for(post.path))= post.title
-              .post__excerpt!= post.excerpt
+              .post__title
+                h2
+                  a(href=url_for(post.path))= post.title
+              .post__body
+                div(style="position:relative; display:table-cell;")
+                  if post.featuredImage
+                    //- img.post__featured-image(src=url_for(post.path + post['featuredImage']))
+                    .post__featured-image(style='background-image:url(#{url_for(post.path + post.featuredImage)})')
+                  .post__excerpt!= post.excerpt
+          .posts__date= post.date.format('YYYY MMM Do')
 
   //- include _partial/post/list_pagination

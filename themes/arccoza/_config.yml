@@ -35,10 +35,15 @@ google_plus:
 fb_admins:
 fb_app_id:
 
+highlight:
+  enable: true
+  line_number: false
+  tab_replace:
+
 # Hexo Beautify 
 beautify:
   types:
-    - html
+    # - html
     - css
     - js
   exclude:
@@ -62,6 +67,7 @@ beautify:
 postcss:
 	plugins:
 		postcss-import: {}
+		postcss-if-media: {}
 		postcss-media-minmax: {}
 		postcss-custom-media: {}
 		postcss-aspect-ratio: {}

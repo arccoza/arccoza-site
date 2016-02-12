@@ -2,6 +2,7 @@ var postcss = require('postcss');
 
 var renderPostCSS = function (data, options) {
   var _cwd = process.cwd();
+  // console.log(hexo);
   // console.log(__dirname, process.cwd());
   // console.log(hexo.theme);
   try {

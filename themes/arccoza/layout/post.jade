@@ -7,6 +7,8 @@ block page_body
         article.post.post--full
           .post__inner
             h1.post__title= page.title
+            if page.featuredImage
+              img.post__featured-image(src=url_for(page.path + page.featuredImage))
             //- .post__excerpt!= page.excerpt
             .post__content!= page.content
             hr
