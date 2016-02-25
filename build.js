@@ -97,8 +97,18 @@ metalsmith(__dirname)
     }
   }())
   .use(collections({
+    all: {
+      pattern: '@(posts|projects)/**/*.md',
+      sortBy: 'date',
+      reverse: true
+    },
     posts: {
       pattern: 'posts/**/*.md',
+      sortBy: 'date',
+      reverse: true
+    },
+    projects: {
+      pattern: 'projects/**/*.md',
       sortBy: 'date',
       reverse: true
     },
@@ -109,11 +119,29 @@ metalsmith(__dirname)
     }
   }))
   .use(paginate({
-    'collections.posts': {
+    'collections.all': {
       perPage: 9,
       layout: 'index.jade',
       first: 'index.html',
-      path: 'page/:num/index.html',
+      path: 'all/page/:num/index.html',
+      pageMetadata: {
+        //title: 'Blog'
+      }
+    },
+    'collections.posts': {
+      perPage: 9,
+      layout: 'index.jade',
+      first: 'posts/index.html',
+      path: 'posts/page/:num/index.html',
+      pageMetadata: {
+        //title: 'Blog'
+      }
+    },
+    'collections.projects': {
+      perPage: 9,
+      layout: 'index.jade',
+      first: 'projects/index.html',
+      path: 'projects/page/:num/index.html',
       pageMetadata: {
         //title: 'Blog'
       }
@@ -148,6 +176,10 @@ metalsmith(__dirname)
   	linksets: [{
       match: { collection: 'posts' },
       pattern: ':date/:title',
+      date: 'YYYY/MM/DD'
+    },{
+      match: { collection: 'projects' },
+      pattern: 'projects/:title',
       date: 'YYYY/MM/DD'
     },{
       match: { collection: 'pages' },

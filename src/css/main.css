@@ -115,6 +115,7 @@ pre {
 
 .page {
 	position: relative;
+	height: 100vh;
 	/*overflow-x: hidden;
 	overflow-y: visible;*/
 }
@@ -124,6 +125,7 @@ pre {
 }
 .page__inner {
 	position: relative;
+	min-height: 100%;
 	padding-top: 4.2rem;
 	padding-bottom: 3.2rem;
 }
