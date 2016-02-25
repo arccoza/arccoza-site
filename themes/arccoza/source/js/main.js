@@ -1,6 +1,42 @@
+var $ = require('jquery');
+// var hintent = require('hoverintent');
+// require('jquery-hoverintent')($);
+
+// Hover intent; adds .hover class to elements with data-classy-state="hover"
+// attr after 700ms.
+(function(undefined) {
+  document.addEventListener('DOMContentLoaded', function() {
+    var q = document.querySelectorAll.bind(document);
+    
+    $(document).on('mouseenter', '[data-classy-state="hover"]', function(ev) {
+      var $trgt = $(ev.currentTarget);
+      // var tid = $trgt.data('hoverIntentId');
+      var tid = null;
+
+      tid = setTimeout(function() {
+        $trgt.data('hoverIntentId', null);
+        if(!$trgt.hasClass('hover'))
+          $trgt.addClass('hover');
+      }, 700);
+      $trgt.data('hoverIntentId', tid);
+
+    }).on('mouseleave', '[data-classy-state="hover"]', function(ev) {
+      var $trgt = $(ev.currentTarget);
+      var tid = $trgt.data('hoverIntentId');
+
+      if(tid)
+        clearTimeout(tid);
+      if($trgt.hasClass('hover'))
+        $trgt.removeClass('hover');
+    });
+
+  }, false);
+})();
+
+// Controls the drop down (mobile) menu.
 (function(undefined) {
 	document.addEventListener('DOMContentLoaded', function() {
-		window.scrollTo(0,1);
+		// window.scrollTo(0,1);
 
 		var q = document.querySelectorAll.bind(document);
 		var els = q('.page-header__hamburger');

@@ -73,3 +73,6 @@ postcss:
 		postcss-aspect-ratio: {}
 		postcss-layout: {}
 		autoprefixer: {}
+
+browserify:
+  exclude: '**/*.min.js'

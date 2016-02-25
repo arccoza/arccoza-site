@@ -20,16 +20,16 @@ html(lang="en")
                     use(xlink:href="#icon-menu")
               .page-header__nav.page-header__nav--left
                 a(href='/') all
-                a(href='/') posts
-                a(href='/') projects
+                a(href='/posts') posts
+                a(href='/projects') projects
               
               .page-header__nav.page-header__nav--right
-                a(href='/') about & contact
-                a(href='/') 
+                a(href='/about-contact') about & contact
+                a(href='https://twitter.com/arccoza') 
                   |twitter
                   svg.page-header__icon.icon-twitter
                     use(xlink:href="#icon-twitter")
-                a(href='/') 
+                a(href='https://github.com/arccoza') 
                   |github
                   svg.page-header__icon.icon-github
                     use(xlink:href="#icon-github")
@@ -41,4 +41,6 @@ html(lang="en")
 
         footer.page-footer
           block page_footer
+            .page-footer__inner
+              span Site, content, and logo &copy; copyright 2016 Adrien de Pierres.
             //- include _partial/site/footer
