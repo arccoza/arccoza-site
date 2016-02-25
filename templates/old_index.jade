@@ -1,0 +1,21 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width')
+    title= 'Home'
+  body
+    each post in pagination.files
+      article.content-article
+        header
+          span.timestamp= post.date
+          h2
+            a(href='/' + post.path)= post.title
+        section!= post.snippet
+    nav
+      if pagination.previous
+        a.btn(href='/' + pagination.previous.path)
+          | Newer
+      if pagination.next
+        a.btn(href='/' + pagination.next.path)
+          | Older

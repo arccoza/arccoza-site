@@ -1,0 +1,7 @@
+header:
+  all: '/'
+  posts: '/'
+  projects: '/'
+  'about & contact': '/'
+  twitter: 'https://twitter.com/arccoza'
+  github: 'https://github.com/arccoza'
