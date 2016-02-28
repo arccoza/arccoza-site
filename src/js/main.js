@@ -1,4 +1,24 @@
 var $ = require('jquery');
+
+
+(function(undefined) {
+  document.addEventListener('DOMContentLoaded', function() {
+    var q = document.querySelectorAll.bind(document);
+    
+    $(window).on('scroll', function(ev) {
+      var scrollTop = $(window).scrollTop();
+      
+      if(scrollTop > 10) {
+        $('.page-header__title').addClass('page-header__title--hidden');
+      }
+      else {
+        $('.page-header__title').removeClass('page-header__title--hidden');
+      }
+    });
+
+  }, false);
+})();
+
 // var hintent = require('hoverintent');
 // require('jquery-hoverintent')($);
 

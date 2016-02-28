@@ -20,8 +20,8 @@ block page_body
               .post__body
                 div(style="position:relative; display:table-cell; overflow:hidden;")
                   if post.featuredImage
-                    //- img.post__featured-image(src=url_for(post.path + post['featuredImage']))
-                    .post__featured-image(style='background-image:url(#{'/' + post.path + post.featuredImage})')
+                    //- img.post__featured-image(src='/img/' + post.featuredImage)
+                    .post__featured-image(style='background-image:url(#{"/img/" + post.featuredImage})')
                   .post__excerpt!= post.excerpt
                   a.post__read-more(href='/' + post.path)
                     .post__button Read More

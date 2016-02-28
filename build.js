@@ -13,6 +13,28 @@ var metadata = require('metalsmith-metadata');
 var fileMetadata = require('metalsmith-filemetadata');
 var watch = require('metalsmith-watch');
 var serve = require('metalsmith-serve');
+var marked = require('marked');
+var markedRenderer = new marked.Renderer();
+
+markedRenderer.code = function (code, lang) {
+  try {
+    code = highlight.highlight(lang, code, true).value;
+  } catch (ex) {
+  }
+
+  return '<pre class="highlight highlight--block"><code>' + code + '</code></pre>';
+}
+
+markedRenderer.codespan = function (code) {
+  try {
+    code = highlight.highlightAuto(code).value;
+  } catch (ex) {
+  }
+  
+  return '<code class="highlight highlight--span">' + code + '</code>';
+}
+
+// console.log(marked('```\nvar a;\n```', { renderer: markedRenderer }));
 
 var postcssPlugins = {};
 postcssPlugins['import'] = require('postcss-import');
@@ -150,14 +172,15 @@ metalsmith(__dirname)
   .use(markdown({
     gfm: true,
     tables: true,
+    renderer: markedRenderer,
     highlight: function(code, lang) {
       if(!lang) {
         return code;
       }
-      
+
       try {
-        return highlight.highlight(lang, code).value;
-      } catch (e) {
+        return highlight.highlight(lang, code, true).value;
+      } catch (ex) {
         return code;
       }
     }

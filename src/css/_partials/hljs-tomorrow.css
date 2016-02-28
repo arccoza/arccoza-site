@@ -1,6 +1,6 @@
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
 
-.highlight {
+.highlight--block {
   display: block;
   overflow-x: auto;
   padding: 0.5em;

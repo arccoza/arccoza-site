@@ -1,19 +1,19 @@
 extends base
 
 prepend site_title
-  | #{page.title} &mdash;&nbsp;
+  | #{title} &mdash;&nbsp;
 
 block page_body
   .posts.posts--single
     ul.posts__inner
       li.posts__item
-        article.post.post--full
-          .post__inner
-            h1.post__title= page.title
-            if page.featuredImage
-              img.post__featured-image(src=url_for(page.path + page.featuredImage))
+        article.page.page--full
+          .page__inner
+            h1.page__title= title
+            if featuredImage
+              img.page__featured-image(src='/img/' + featuredImage)
             //- .post__excerpt!= page.excerpt
-            .post__content!= page.content
+            .page__content!= content
             hr
 
   //- include _partial/post/list_pagination
