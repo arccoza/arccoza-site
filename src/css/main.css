@@ -458,7 +458,8 @@ pre {
   padding: 0.5em;
   /*background-color: #f0f0f0;*/
   background-color: rgba(0,0,0,0.1);
-  color: #505050;
+  /*color: #505050;*/
+  color: #8959a8;
 }
 .post .highlight--block {
 	margin-bottom: 1em;

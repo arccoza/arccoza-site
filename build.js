@@ -26,10 +26,10 @@ markedRenderer.code = function (code, lang) {
 }
 
 markedRenderer.codespan = function (code) {
-  try {
-    code = highlight.highlightAuto(code).value;
-  } catch (ex) {
-  }
+  // try {
+  //   code = highlight.highlightAuto(code).value;
+  // } catch (ex) {
+  // }
   
   return '<code class="highlight highlight--span">' + code + '</code>';
 }
