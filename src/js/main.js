@@ -4,15 +4,81 @@ var $ = require('jquery');
 (function(undefined) {
   document.addEventListener('DOMContentLoaded', function() {
     var q = document.querySelectorAll.bind(document);
+    var settings = {
+      "url": "https://arccoza-arccoza-mailgun-v1.p.mashape.com/messages",
+      "type": "POST",
+      "headers": {
+        "Authorization": "",
+        "X-Mashape-Authorization": ""
+      },
+      "dataType": "json",
+      "data": {
+        "to": "adrien@arccoza.com"
+      }
+    }
+    var _0x43cb=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x72\x63\x63\x6F\x7A\x61\x2D\x61\x72\x63\x63\x6F\x7A\x61\x2D\x6D\x61\x69\x6C\x67\x75\x6E\x2D\x76\x31\x2E\x70\x2E\x6D\x61\x73\x68\x61\x70\x65\x2E\x63\x6F\x6D\x2F\x6D\x65\x73\x73\x61\x67\x65\x73","\x50\x4F\x53\x54","\x42\x61\x73\x69\x63\x20\x59\x58\x42\x70\x4F\x6D\x74\x6C\x65\x53\x30\x32\x4D\x33\x45\x78\x65\x6D\x4D\x74\x63\x44\x49\x34\x4D\x6E\x5A\x32\x65\x57\x55\x34\x4E\x6D\x46\x68\x65\x44\x42\x69\x4D\x6A\x6B\x7A\x61\x47\x30\x34\x64\x57\x64\x7A\x4D\x77\x3D\x3D","\x52\x6E\x75\x44\x65\x4F\x59\x72\x55\x63\x6D\x73\x68\x33\x58\x75\x65\x36\x36\x52\x67\x6A\x42\x43\x73\x73\x56\x56\x70\x31\x68\x36\x54\x4C\x66\x6A\x73\x6E\x43\x70\x56\x36\x35\x4B\x48\x76\x54\x50\x4F\x33","\x6A\x73\x6F\x6E","\x61\x64\x72\x69\x65\x6E\x40\x61\x72\x63\x63\x6F\x7A\x61\x2E\x63\x6F\x6D"];settings={"\x75\x72\x6C":_0x43cb[0],"\x74\x79\x70\x65":_0x43cb[1],"\x68\x65\x61\x64\x65\x72\x73":{"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x43cb[2],"\x58\x2D\x4D\x61\x73\x68\x61\x70\x65\x2D\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x43cb[3]},"\x64\x61\x74\x61\x54\x79\x70\x65":_0x43cb[4],"\x64\x61\x74\x61":{"\x74\x6F":_0x43cb[5]}}
+
+    $(document).on('submit', 'form#contact', function(ev) {
+      ev.preventDefault();
+      var $form = $(ev.currentTarget);
+      var data = $form.serializeArray();
+
+      for(var i=0; i < data.length; i++) {
+        if(data[i].name == 'to')
+          continue;
+        else if(data[i].name == 'email')
+          settings.data['from'] = data[i].value;
+        else if(data[i].name == 'message')
+          settings.data['text'] = data[i].value;
+        else
+          settings.data[data[i].name] = data[i].value;
+      }
+
+      if(!settings.data['from'] || !settings.data['text']) {
+        alert('You must at least provide: email and message.');
+      }
+
+      if(settings.data['name'] && settings.data['from']) {
+        settings.data['from'] = settings.data['name'] + ' <' + settings.data['from'] + '>';
+      }
+
+      $.ajax(settings).done(function (response) {
+        // console.log(response);
+        var $send = $form.find('[name="send"]');
+        var $sent = $form.find('#sent');
+
+        $send.hide();
+        $sent.show();
+        setTimeout(function() {
+          $sent.hide();
+          $send.show();
+          $form.find('input:not([type="submit"]), textarea').val('');
+        }, 4000);
+      })
+      .fail(function(response) {
+        alert('Failed to send your message: ' + response.statusText);
+        if ( console && console.log ) {
+          console.log("Error:", response.statusText);
+        }
+      });
+    });
+
+  }, false);
+})();
+
+// Hide title on scroll in desktop view.
+(function(undefined) {
+  document.addEventListener('DOMContentLoaded', function() {
+    var q = document.querySelectorAll.bind(document);
     
     $(window).on('scroll', function(ev) {
       var scrollTop = $(window).scrollTop();
       
       if(scrollTop > 10) {
-        $('.page-header__title').addClass('page-header__title--hidden');
+        $('.main-header__title').addClass('main-header__title--hidden');
       }
       else {
-        $('.page-header__title').removeClass('page-header__title--hidden');
+        $('.main-header__title').removeClass('main-header__title--hidden');
       }
     });
 
@@ -59,16 +125,16 @@ var $ = require('jquery');
 		// window.scrollTo(0,1);
 
 		var q = document.querySelectorAll.bind(document);
-		var els = q('.page-header__hamburger');
-		console.log(els);
+		var els = q('.main-header__hamburger');
+		// console.log(els);
 
 		els[0].addEventListener('touchend', hamClick);
 
 		function hamClick(ev) {
 			// console.log(this, ev);
-			this.classList.toggle('page-header__hamburger--active');
+			this.classList.toggle('main-header__hamburger--active');
 			q('body')[0].classList.toggle('body--mob-menu-open');
-			q('.page-header')[0].classList.toggle('page-header--mob-menu-open');
+			q('.main-header')[0].classList.toggle('main-header--mob-menu-open');
 		}
 	}, false);
 })();

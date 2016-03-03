@@ -6,41 +6,41 @@ html(lang="en")
 
   body
     include _partial/symbol-defs.svg
-    .page
-      .page__inner
-        header.page-header
-          block page_header
-            .page-header__inner
-              .page-header__masthead
-                .page-header__logo
+    .main
+      .main__inner
+        header.main-header
+          block main_header
+            .main-header__inner
+              .main-header__masthead
+                .main-header__logo
                   img(src='/img/logo.svg')
-                .page-header__title= site.title
-                .page-header__hamburger
-                  svg.page-header__icon.icon-menu
+                .main-header__title= site.title
+                .main-header__hamburger
+                  svg.main-header__icon.icon-menu
                     use(xlink:href="#icon-menu")
-              .page-header__nav.page-header__nav--left
+              .main-header__nav.main-header__nav--left
                 a(href='/') all
                 a(href='/posts') posts
                 a(href='/projects') projects
               
-              .page-header__nav.page-header__nav--right
+              .main-header__nav.main-header__nav--right
                 a(href='/about-contact') about & contact
                 a(href='https://twitter.com/arccoza') 
                   |twitter
-                  svg.page-header__icon.icon-twitter
+                  svg.main-header__icon.icon-twitter
                     use(xlink:href="#icon-twitter")
                 a(href='https://github.com/arccoza') 
                   |github
-                  svg.page-header__icon.icon-github
+                  svg.main-header__icon.icon-github
                     use(xlink:href="#icon-github")
-        block page_quotes
+        block main_quotes
           
 
-        section.page-body
-          block page_body
+        section.main-body
+          block main_body
 
-        footer.page-footer
-          block page_footer
-            .page-footer__inner
+        footer.main-footer
+          block main_footer
+            .main-footer__inner
               span Site, content, and logo &copy; copyright 2016 Adrien de Pierres.
             //- include _partial/site/footer

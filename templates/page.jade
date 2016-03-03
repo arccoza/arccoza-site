@@ -3,7 +3,7 @@ extends base
 prepend site_title
   | #{title} &mdash;&nbsp;
 
-block page_body
+block main_body
   .posts.posts--single
     ul.posts__inner
       li.posts__item
@@ -13,7 +13,7 @@ block page_body
             if featuredImage
               img.page__featured-image(src='/img/' + featuredImage)
             //- .post__excerpt!= page.excerpt
-            .page__content!= content
-            hr
+            .page__content!= contents
+            
 
   //- include _partial/post/list_pagination
