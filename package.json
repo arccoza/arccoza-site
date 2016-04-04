@@ -18,6 +18,7 @@
     "metalsmith": "^2.1.0",
     "metalsmith-browserify": "^0.1.0",
     "metalsmith-collections": "^0.7.0",
+    "metalsmith-drafts": "0.0.1",
     "metalsmith-filemetadata": "^1.0.0",
     "metalsmith-in-place": "^1.4.3",
     "metalsmith-layouts": "^1.5.4",

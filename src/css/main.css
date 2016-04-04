@@ -30,7 +30,8 @@ html, body {
 	min-height: 100vh;
 	margin: 0;
 	padding: 0;
-	color: #8a8a8a;
+	/*color: #8a8a8a;*/
+	color: #7a7a7a;
 	font-family: 'Tinos', serif;
 	/*font-size: calc(8px + 0.9vw);*/
 	font-size: calc(10*0.0007812 * 100vw + 10*1px);
@@ -91,7 +92,8 @@ h3 {
 
 hr {
 	border: none;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #f0f0f0;
+	border-top: 1px solid rgba(0,0,0,0.1);
 }
 
 p {

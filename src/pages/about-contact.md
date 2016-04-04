@@ -7,10 +7,10 @@ layout: page.jade
 #permalink: /2011/11/cross-platform-development-considerations/
 ---
 
-I'm a South African developer living in Japan, I have a particular fondness for Python, JavaScript, embedded systems, Linux and the web, but I've wandered all over the dev landscape. 
+I'm a South African developer living in Japan. I have a particular fondness for Python, JavaScript, embedded systems, Linux and the web, but I've wandered all over the dev landscape. 
 
 
-[github](https://github.com/arccoza) - [stackoverflow](https://careers.stackoverflow.com/cv/employer/312979) - [twitter](https://twitter.com/arccoza)
+[github](https://github.com/arccoza) - [stackoverflow](https://stackoverflow.com/cv/adrien.depierres) - [twitter](https://twitter.com/arccoza)
 
 
 Ask me anything below:
