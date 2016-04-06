@@ -1,12 +1,17 @@
-meta(charset="utf-8")
-meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
-<!-- Chrome, Firefox OS and Opera -->
-meta(name="theme-color", content="#191919")
-<!-- Windows Phone -->
-meta(name="msapplication-navbutton-color", content="#191919")
-<!-- iOS Safari -->
-meta(name="apple-mobile-web-app-status-bar-style", content="#191919")
+block page_meta
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+  meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+  <!-- Chrome, Firefox OS and Opera -->
+  meta(name="theme-color", content="#191919")
+  <!-- Windows Phone -->
+  meta(name="msapplication-navbutton-color", content="#191919")
+  <!-- iOS Safari -->
+  meta(name="apple-mobile-web-app-status-bar-style", content="#191919")
+
+  if favicons && favicons.html
+    each item in favicons.html
+      != item
 
 if site.author
   meta(name="author", content=site.author)
@@ -20,7 +25,7 @@ title
     if site.title
       = site.title
 
-link(href="/favicon.png", rel="icon")
+//- link(href="/favicon.png", rel="icon")
 
 
 //- RSS

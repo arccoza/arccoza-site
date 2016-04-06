@@ -1,7 +1,7 @@
 header:
   all: '/'
-  posts: '/'
-  projects: '/'
-  'about & contact': '/'
+  posts: '/posts'
+  projects: '/projects'
+  'about & contact': '/about-contact'
   twitter: 'https://twitter.com/arccoza'
   github: 'https://github.com/arccoza'

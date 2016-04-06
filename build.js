@@ -3,6 +3,7 @@ var drafts = require('metalsmith-drafts');
 var markdown = require('metalsmith-markdown');
 var highlight = require('highlight.js');
 var layouts = require('metalsmith-layouts');
+var inPlace = require('metalsmith-in-place');
 // var postcss = require('postcss');
 var postcss = require('./metalsmith-with-postcss');
 var justAMoment = require('./metalsmith-just-a-moment');
@@ -54,6 +55,7 @@ metalsmith(__dirname)
   //   {pattern: "projects/*", metadata: {"type": "projects"}}
   // ]))
   .use(justAMoment())
+  .use(require('./favi')())
   .use(collections({
     all: {
       pattern: '@(posts|projects)/**/*.md',
@@ -153,6 +155,10 @@ metalsmith(__dirname)
       done();
     }
   }())
+  .use(inPlace({
+    engine: 'mustache',
+    pattern: ['**/*.html']
+  }))
   .use(layouts({
     engine: 'jade',
     directory: 'templates',

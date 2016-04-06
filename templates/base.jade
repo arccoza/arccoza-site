@@ -19,20 +19,30 @@ html(lang="en")
                   svg.main-header__icon.icon-menu
                     use(xlink:href="#icon-menu")
               .main-header__nav.main-header__nav--left
-                a(href='/') all
-                a(href='/posts') posts
-                a(href='/projects') projects
+                - var i = 0;
+                each url, name in menus.header
+                  - i++;
+                  if i < 4
+                    a(href='#{url}')= name
+                //- a(href='/') all
+                //- a(href='/posts') posts
+                //- a(href='/projects') projects
               
               .main-header__nav.main-header__nav--right
-                a(href='/about-contact') about & contact
-                a(href='https://twitter.com/arccoza') 
-                  |twitter
-                  svg.main-header__icon.icon-twitter
-                    use(xlink:href="#icon-twitter")
-                a(href='https://github.com/arccoza') 
-                  |github
-                  svg.main-header__icon.icon-github
-                    use(xlink:href="#icon-github")
+                - var i = 0;
+                each url, name in menus.header
+                  - i++;
+                  if i > 3
+                    a(href='#{url}')= name
+                //- a(href='/about-contact') about & contact
+                //- a(href='https://twitter.com/arccoza') 
+                //-   |twitter
+                //-   svg.main-header__icon.icon-twitter
+                //-     use(xlink:href="#icon-twitter")
+                //- a(href='https://github.com/arccoza') 
+                //-   |github
+                //-   svg.main-header__icon.icon-github
+                //-     use(xlink:href="#icon-github")
         block main_quotes
           
 
