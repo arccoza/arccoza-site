@@ -84,7 +84,7 @@ module.exports = exports = function(options) {
       return;
     }
 
-    options.path = destDir;
+    options.path = path.join('/', destDir);
     favicons(srcFile.contents, options, callback);
   }
 }
