@@ -25,6 +25,6 @@ block main_body
                   .post__excerpt!= post.excerpt
                   a.post__read-more(href='/' + post.path)
                     .post__button Read More
-          .posts__date= post.date.format('YYYY MMM Do')
+          .posts__date(title=post.date.format())= post.date.format('YYYY MMM Do')
 
   //- include _partial/post/list_pagination
