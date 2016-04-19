@@ -16,8 +16,6 @@ module.exports = exports = function(options){
   var recur = function(obj) {
     var self = recur;
     var m = null;
-    // console.log('--',obj);
-    // console.log(p);
 
     if(Array.isArray(obj) && !visited.has(obj)) {
       visited.set(obj, true);

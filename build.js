@@ -54,7 +54,6 @@ metalsmith(__dirname)
   //   {pattern: "posts/*", metadata: {"type": "post"}},
   //   {pattern: "projects/*", metadata: {"type": "projects"}}
   // ]))
-  .use(justAMoment({asUTC: false}))
   .use(require('./favi')())
   .use(collections({
     all: {
@@ -107,6 +106,7 @@ metalsmith(__dirname)
       }
     }
   }))
+  .use(justAMoment({asUTC: false}))
   .use(markdown({
     gfm: true,
     tables: true,
