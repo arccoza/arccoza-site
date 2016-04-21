@@ -5,8 +5,8 @@ var highlight = require('highlight.js');
 var layouts = require('metalsmith-layouts');
 var inPlace = require('metalsmith-in-place');
 // var postcss = require('postcss');
-var postcss = require('./metalsmith-with-postcss');
-var justAMoment = require('./metalsmith-just-a-moment');
+var postcss = require('metalsmith-with-postcss');
+var justAMoment = require('metalsmith-just-a-moment');
 var browserify = require('metalsmith-browserify');
 var more = require('metalsmith-more');
 var permalinks = require('metalsmith-permalinks');
@@ -175,7 +175,8 @@ metalsmith(__dirname)
       'postcss-layout': {},
       'postcss-aspect-ratio': {},
       'autoprefixer': {}
-    }
+    },
+    removeExcluded: true
   }))
   .use(browserify('js/main.js', [
     './src/js/main.js'
