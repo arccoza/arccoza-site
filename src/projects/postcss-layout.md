@@ -36,6 +36,9 @@ See the [demo][demo] or the example in the `example/` directory for usage.
 
 All layout elements are given `box-sizing: border-box;` by default.
 
+## New!
+You can now add `buffer` and `shift` values to your grid span properties to create space around elements (with `buffer` values) or move them horizontally (with `shift` value) without bumping neighbours. Read more bellow.
+
 ## Install
 `npm install postcss-layout --save-dev`
 
@@ -49,7 +52,7 @@ or as I like to do it:
 
 `<div class="container"> <div class="inner"> <div class="item"></div> </div> </div>`
 
-You will quickly bulk up your final CSS file if you use the `layout` property everywhere you want a layout.
+You will quickly bulk up your final CSS file if you use the `layout` property everywhere you want a layout. 
 Preferably, create a few reusable layout classes with `layout`, and apply them to your elements.
 
 ## Layouts
@@ -60,9 +63,9 @@ Preferably, create a few reusable layout classes with `layout`, and apply them t
 }
 ```
 
-Creates a container with a vertically stacked 'tower' of elements(items), using `display:block`
+Creates a container with a vertically stacked 'tower' of elements(items), using `display:block` 
 or `display:table`, that can be optionally aligned left, right or center.
-Another optional property value is `shrink` which causes a stacked element to shrink wrap its contents;
+Another optional property value is `shrink` which causes a stacked element to shrink wrap its contents; 
 it won't expand to fill its parent, instead make its width as small as possible to fit its contents.
 
 #### Caveats
@@ -95,18 +98,18 @@ Firefox has [buggy](https://bugzilla.mozilla.org/show_bug.cgi?id=307866) table l
 
 Creates horizontally arranged child elements(items) in the container, using `display:inline-block`.
 There are optional horizontal and vertical alignment property values.
-Child elements in a `layout: lines` container will wrap when they are longer than the container width,
+Child elements in a `layout: lines` container will wrap when they are longer than the container width, 
 unless `nowrap` is specified.
-This layout sets `font-size:0` on the container to remove whitespace, then sets `font-size:initial` on
+This layout sets `font-size:0` on the container to remove whitespace, then sets `font-size:initial` on 
 child elements to reset `font-size`. Be aware of this as your font sizes may not be what you expect.
 
 #### Caveats
-Using the vertical align options automatically sets `nowrap`, you cannot vertically allign more than one line
-with `display:inline-block` and psuedo element technique. To vertically align multiline items use the layout
-demonstrated in the `example` directory, which uses two nested layouts, the first for vertical alignment, then
+Using the vertical align options automatically sets `nowrap`, you cannot vertically allign more than one line 
+with `display:inline-block` and psuedo element technique. To vertically align multiline items use the layout 
+demonstrated in the `example` directory, which uses two nested layouts, the first for vertical alignment, then 
 horizontal alignment inside the vertically aligned element.
 
-Grids cannot use `em` units for gutters with `layout:lines` because the container has `font-size:0` to
+Grids cannot use `em` units for gutters with `layout:lines` because the container has `font-size:0` to 
 deal with whitespace.
 
 #### Example
@@ -148,11 +151,11 @@ deal with whitespace.
 
 Creates horizontally arranged child elements(items) in the container, using `float:left` by default.
 There are optional horizontal arrangement property values.
-Child elements in a `layout: flow` container will wrap when they are longer than the container width.
+Child elements in a `layout: flow` container will wrap when they are longer than the container width. 
 This layout uses a pseudo element clear-fix technique.
 
 #### Caveats
-Using `left` or `right` options will align items left or right and also reverse item arrangement because
+Using `left` or `right` options will align items left or right and also reverse item arrangement because 
 floats are being used to create the layout.
 
 #### Example
@@ -191,8 +194,8 @@ floats are being used to create the layout.
 }
 ```
 
-Creates horizontally arranged child elements(items), using `display:table` and `display:table-cell`
-that stretch in columns from the top to the bottom of the selected container elements,
+Creates horizontally arranged child elements(items), using `display:table` and `display:table-cell` 
+that stretch in columns from the top to the bottom of the selected container elements, 
 and horizontally fill their container.
 *NOTE* the `.container` will have a width set of `100%` by default.
 
@@ -223,8 +226,8 @@ and horizontally fill their container.
 }
 ```
 
-Creates vertically arranged child elements(items), using `display:table` and `display:table-row`
-that stretch in rows from the left to the right of the selected container elements,
+Creates vertically arranged child elements(items), using `display:table` and `display:table-row` 
+that stretch in rows from the left to the right of the selected container elements, 
 and vertically fill their container.
 *NOTE* the `.container` will have a width set of `100%` by default.
 
@@ -273,11 +276,11 @@ You **must** set `layout:lines` or `layout:flow` or `layout:columns` on the cont
 
 ```css
 .child {
-  GRID_NAME-span: 6;
+  GRID_NAME-span: WIDTH [, BUFFER / BUFFER_LEFT BUFFER_RIGHT [, SHIFT ] ];
 }
 ```
 
-Use the `GRID_NAME-span` property in a child to define its width relative to the container grid.
+Use the `GRID_NAME-span` property in a child to define its width relative to the container grid. You can also optionally provide `BUFFER` values; A single `BUFFER` value adds that much spacing to both the left and right side of the child. Use `BUFFER_LEFT` and `BUFFER_RIGHT` individual values to set different spacing for each side. There is also an optional `SHIFT` value; A positive `SHIFT` value moves the child right, a negative `SHIFT` value moves the child left, this move will not affect the flow of the other child elements, you must provide a value for `BUFFER` to use `SHIFT`, just use 0 if you don't want any buffer. 
 
 #### Caveats
 As mentioned before, you cannot use `em` units for gutters in a `layout:lines` container.
@@ -297,14 +300,14 @@ You cannot use gutters with `layout:columns`, and the items will always stretch 
 }
 
 .child {
-  g12-span: 4;
+  g12-span: 4, 2 0, -1;
 }
 
 /* Output. */
 .container {
   box-sizing: border-box;
-  margin-right: -0.5em;
-  margin-left: -0.5em;
+  margin-right: -5px;
+  margin-left: -5px;
 }
 .container > * {
   box-sizing: border-box;
@@ -320,8 +323,9 @@ You cannot use gutters with `layout:columns`, and the items will always stretch 
 }
 
 .child {
-  margin-right: 0.5em;
-  margin-left: 0.5em;
+  left: -8.333333333333334%;
+  margin-right: 5px;
+  margin-left: calc(16.666666666666668% + 5px);
   width: calc(33.333333333333336% - 10px);
 }
 ```
